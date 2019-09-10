@@ -29,7 +29,7 @@ public class OrderWS {
 	private OrderBo orderBo;
 	
 	@PostMapping("/order")
-	@ApiOperation("create order")
+	@ApiOperation("create  an order if not exit")
 	public void createOrder(@RequestBody @Valid OrderIn orderIn) {
 		
 		OrderDto orderDto = OrderMapper.OrderInToOrderDto(orderIn);
