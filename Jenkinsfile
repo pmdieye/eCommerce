@@ -1,11 +1,11 @@
 pipeline {
 agent any
-  stages{
+  stage {
     steps('Build'){
       sh '/Applications/apache-maven-3.6.0/bin mvn clean install'
     }
   }
-  stages{
+  stage {
     steps('Test'){
       sh '/Applications/apache-maven-3.6.0/bin mvn clean test'
     }
