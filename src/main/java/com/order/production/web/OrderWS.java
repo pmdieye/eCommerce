@@ -45,7 +45,7 @@ public class OrderWS {
 	}
 	
 	@GetMapping("/orders")
-	@ApiOperation("Find list all orders")
+	@ApiOperation("Find list orders")
 	public List<OrderOut> findList() {
 		List<OrderDto> listOrderDto = orderBo.listOrder();
 		return listOrderDto.stream()
