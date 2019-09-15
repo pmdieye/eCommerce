@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ import lombok.ToString;
 @ToString(exclude = {"listeproduits"})
 @Builder  
 @Entity
-@Table(name= "order_prod")
+@Table(name= "orders")
 public class Order implements Serializable {
 	/**
 	 * 
@@ -38,6 +39,7 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = 1648238583265100949L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="order_id")
 	private Long id;
 	@NotNull
 	private Long commandNumber;
