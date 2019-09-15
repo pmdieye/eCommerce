@@ -13,7 +13,7 @@ public class OrderIt {
 	
 	private static final Long COMMAND_NUMBER = 10L;
 	private static final String DEVICE_BASE_URL = "localhost:8081";
-	private static final String GET_ORDER_URL = "/api/order/10";
+	private static final String GET_ORDER_URL = "api/order/10";
 
 	@Test
 	public void testFindOrderBycommandNumber() {
