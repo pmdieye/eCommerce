@@ -34,6 +34,8 @@ public class Product implements Serializable{
 	@NotNull
 	private String name;
 	
+	private String photo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Order orderc;

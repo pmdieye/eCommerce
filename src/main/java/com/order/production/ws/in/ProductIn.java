@@ -1,10 +1,6 @@
-package com.order.production.Dto;
+package com.order.production.ws.in;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import com.order.production.entities.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,12 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProductDto {
+public class ProductIn {
+	
 	@NotNull
 	private String name;
+	
 	private String photo;
-	@ManyToOne
-	@JoinColumn(name="order_id")
-	private Order order;
 
 }
