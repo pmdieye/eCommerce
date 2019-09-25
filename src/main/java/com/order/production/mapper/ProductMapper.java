@@ -37,6 +37,7 @@ public class ProductMapper {
 	public static  ProductDto productEntityToProductDto(Product product) {
 		ProductDto productDto = null;
 		productDto = ProductDto.builder()
+				.id(product.getId())
 				.name(product.getName())
 				.photo(product.getPhoto())
 				.build();
@@ -47,6 +48,7 @@ public class ProductMapper {
 	public static ProductOut ProductDtoToProductOut(ProductDto productDto) {
 		ProductOut productout= null;
 		productout= ProductOut.builder()
+				.id(productDto.getId())
 				.name(productDto.getName())
 				.photo(productDto.getPhoto())
 				.build();

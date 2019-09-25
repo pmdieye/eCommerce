@@ -10,5 +10,4 @@ public interface OrderBo {
 	void createOrder(OrderDto order);
 	OrderDto findOrder(Long commandNumber);
 	List<OrderDto> listOrder();
-
 }

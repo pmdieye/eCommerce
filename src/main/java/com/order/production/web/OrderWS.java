@@ -1,11 +1,13 @@
 package com.order.production.web;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import com.order.production.ws.out.OrderOut;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api")
 public class OrderWS {

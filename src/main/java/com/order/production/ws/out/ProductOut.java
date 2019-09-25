@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProductOut {
-	
+	private Long id;
 	private String name;
 	private String photo;
 

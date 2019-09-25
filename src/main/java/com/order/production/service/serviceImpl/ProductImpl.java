@@ -1,5 +1,9 @@
 package com.order.production.service.serviceImpl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,10 +11,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.order.production.Dto.ProductDto;
 import com.order.production.entities.Product;
 import com.order.production.exception.ProductAlreadyExistException;
+import com.order.production.exception.ProductNotFoundException;
 import com.order.production.mapper.ProductMapper;
 import com.order.production.repository.OrderRepository;
 import com.order.production.repository.ProductRepository;
@@ -58,5 +64,25 @@ public class ProductImpl implements ProductBo{
 			.collect(Collectors.toList());
 			
 	}
+
+	@Override
+	public byte[] getPhoto(Long id) throws IOException {
+		Product p = productRepository.findById(id).get();
+		return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto()));
+	}
+
+	@Override
+	public void editPhoto(MultipartFile file, Long id) throws IOException {
+		// TODO Auto-generated method stub
+		Product p = productRepository.findById(id).get();
+		if(p==null) {
+			throw new ProductNotFoundException(p.getName());
+		}
+		p.setPhoto(id+".jpg");
+		Files.write(Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto()), file.getBytes());
+		productRepository.save(p);
+	}
+	
+	
 
 }
