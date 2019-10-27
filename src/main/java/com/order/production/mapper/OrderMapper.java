@@ -14,10 +14,11 @@ public final class OrderMapper {
 		
 		OrderDto orderDto =null;
 		if(order != null) {
-			orderDto = new OrderDto();
-			orderDto.setCommandNumber(order.getCommandNumber());
-			orderDto.setCreationDate(order.getCreationDate());
-			orderDto.setModificationDate(order.getModificationDate());
+			orderDto = OrderDto.builder()
+					.commandNumber(order.getCommandNumber())
+					.creationDate(order.getCreationDate())
+					.modificationDate(order.getModificationDate())
+					.build();
 		}
 		return orderDto;
 	}

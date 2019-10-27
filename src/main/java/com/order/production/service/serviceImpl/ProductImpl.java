@@ -1,5 +1,8 @@
 package com.order.production.service.serviceImpl;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -69,6 +72,7 @@ public class ProductImpl implements ProductBo{
 	public byte[] getPhoto(Long id) throws IOException {
 		Product p = productRepository.findById(id).get();
 		return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto()));
+		
 	}
 
 	@Override
@@ -79,7 +83,9 @@ public class ProductImpl implements ProductBo{
 			throw new ProductNotFoundException(p.getName());
 		}
 		p.setPhoto(id+".jpg");
-		Files.write(Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto()), file.getBytes());
+		Path path = Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto());
+		//Files.write(Paths.get(System.getProperty("user.home")+"/ecom/images/"+p.getPhoto()), file.getBytes());
+		file.transferTo(path);
 		productRepository.save(p);
 	}
 	
