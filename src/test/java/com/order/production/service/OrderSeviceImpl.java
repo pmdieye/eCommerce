@@ -5,6 +5,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -58,9 +59,7 @@ public class OrderSeviceImpl extends TestCase {
 	public void testFindAllorder() {
 		com.order.production.entities.Order order1 = EntitiesBuilder.orderEntityBuilder(10L);
 		com.order.production.entities.Order order2 = EntitiesBuilder.orderEntityBuilder(1L);
-		List<Order> orders = new ArrayList<>();
-		orders.add(order1);
-		orders.add(order2);
+		List<Order> orders = Arrays.asList(order1,order2);
 		when(orderRepository.findAll()).thenReturn(orders);
 		
 		List<OrderDto> orderdtos= orderService.listOrder();

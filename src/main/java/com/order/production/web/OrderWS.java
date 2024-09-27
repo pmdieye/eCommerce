@@ -29,7 +29,7 @@ public class OrderWS {
 	private OrderBo orderBo;
 	
 	@PostMapping("/order")
-	@ApiOperation("create order")
+	@ApiOperation("create  an order if not exit yet")
 	public void createOrder(@RequestBody @Valid OrderIn orderIn) {
 		
 		OrderDto orderDto = OrderMapper.OrderInToOrderDto(orderIn);
@@ -45,7 +45,7 @@ public class OrderWS {
 	}
 	
 	@GetMapping("/orders")
-	@ApiOperation("Find list of all orders")
+	@ApiOperation("Find list orders")
 	public List<OrderOut> findList() {
 		List<OrderDto> listOrderDto = orderBo.listOrder();
 		return listOrderDto.stream()
